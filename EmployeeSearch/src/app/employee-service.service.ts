@@ -18,4 +18,9 @@ export class EmployeeServiceService {
   {
     return this.http.get(this.baseUrl+"/findbyid/"+empId);
   }
+
+  findByEmployeeName(empName:String):Observable<any>
+  {
+    return this.http.get(this.baseUrl+"/findbyname/"+empName);
+  }
 }

@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<header>
+    <h2>Employee Search by Name</h2>
+</header>
+
+<section>
+    <form class="example" (ngSubmit)="onSubmit()">
+      <input type="text" placeholder="Search by Employee Name" name="search" style="margin:auto;max-width:500px"
+       [(ngModel)]="employeeName">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</section>
+
+<section [hidden]="!errorOccurred">
+    <h2 id="errorMessage">{{errorMessage}}</h2>
+</section>
+
+<div *ngIf="submitted==true">
+  <section [hidden]="!submitted">
+    <table class="table table-striped table-bordered">
+      <thead>
+          <th class="field">EmployeeID</th>
+          <th class="field">EmployeeName</th>
+          <th class="field">DepartmentID</th>
+          <th class="field">DepartmentName</th>
+      </thead>
+   
+      <tbody>
+          <tr *ngFor="let employee of employeeList" style="width: 300px;" >
+            <td class="value">{{employee.empId}}</td>
+            <td class="value">{{employee.empName}}</td>
+            <td class="value">{{employee.department.deptId}}</td>
+            <td class="value">{{employee.department.deptName}}</td>
+          </tr>
+      </tbody>
+  </table>
+</section>
+</div>
